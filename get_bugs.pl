@@ -310,20 +310,31 @@ if (scalar @bug_list) {
     $arguments{nb_newfeatures}  = $nb_newfeatures;
 }
 
-open (SYSPREFS, "git diff $tag installer/data/mysql/sysprefs.sql | grep '^+[^+]' | sed -e 's/^\+//' |");
-my @syspref_queries = <SYSPREFS>;
+open (SYSPREFS, "git show $tag:installer/data/mysql/sysprefs.sql |");
+my @prev_pref_script = <SYSPREFS>;
+close SYSPREFS;
+open (SYSPREFS, "git show HEAD:installer/data/mysql/sysprefs.sql |");
+my @current_pref_script = <SYSPREFS>;
 close SYSPREFS;
 
+my %prev_sysprefs =
+    map { lc($_) => $_ }
+    map { /\(\s*'([^']+)'/; $1 }
+    grep { /\(\s*'/ }
+    @prev_pref_script;
+
+my %current_sysprefs =
+    map { lc($_) => $_ }
+    map { /\(\s*'([^']+)'/; $1 }
+    grep { /\(\s*'/ }
+    @current_pref_script;
+
 my @sysprefs;
-foreach my $queryline (sort { lc($a) cmp lc($b) } @syspref_queries) {
-    $queryline =~ m/\(([^)]*)\)\s*VALUES\s*\(([^)]*)\)/;
-    my @columns = split(/,/, $1);
-    my @values = split(/,/, $2);
-    my $variable = $values[(grep { $columns[$_] eq 'variable' } 0..$#columns) - 1];
-    $variable =~ s/['"`]//g;
-    push @sysprefs, { name => $variable };
+foreach my $key (sort keys %current_sysprefs) {
+    push @sysprefs, { name => $current_sysprefs{$key} }
+        unless exists $prev_sysprefs{$key} or
+               $key eq 'independentbranches' # special case for renamed pref
 }
-@sysprefs = sort { lc($a->{'name'}) cmp lc($b->{'name'}) } @sysprefs;
 $arguments{sysprefs} = \@sysprefs;
 
 # Now we'll alphabetize the contributors based on surname (or at least the last word on their line)
