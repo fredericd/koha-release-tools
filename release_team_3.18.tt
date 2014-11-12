@@ -1,0 +1,19 @@
+  Release Manager:       Tomás Cohen Arazi <tomascohen@gmail.com>
+  Documentation Manager: Nicole C Engard <nengard@gmail.com>
+  Translation Manager:   Bernardo Gonzalez Kriegel <bgkriegel@gmail.com>
+  QA Manager:            Katrin Fischer <Katrin.Fischer@bsz-bw.de>
+  QA Team:               Galen Charlton <gmc@esilibrary.com>
+                         Jonathan Druart <jonathan.druart@biblibre.com>
+                         Brendan Gallagher <brendan@bywatersolutions.com>
+                         Kyle Hall <kyle@bywatersolutions.com>
+                         Julian Maurice <julian.maurice@biblibre.com>
+                         Paul Poulain <paul.poulain@biblibre.com>
+                         Martin Renvoize <martin.renvoize@ptfs-europe.com>
+                         Marcel de Rooy <M.de.Rooy@rijksmuseum.nl>
+  Bug Wranglers:         Alex Sassmannshausen <alex.sassmannshausen@ptfs-europe.com>
+                         Zeno Tajoli <z.tajoli@cineca.it>
+  Packaging Manager:     Robin Sheat <robin@catalyst.net.nz>
+
+  Release Maintainer (3.16.x): Galen Charlton <gmc@esilibrary.com>
+  Release Maintainer (3.14.x): Fridolin Somers <fridolin.somers@biblibre.com>
+  Release Maintainer (3.12.x): Kyle Hall <kyle@bywatersolutions.com>
