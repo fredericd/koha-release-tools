@@ -139,7 +139,7 @@ $pootle = "http://translate.koha-community.org/" unless defined(get($pootle));
 my $translationpage = get($pootle);
 my @translations = ( {language => 'English (USA)'} );
 
-while ($translationpage =~ m#<td class="stats-name">\W*<a[^>]*><span>([^<]*)</span></a>\W*</td>\W*<td class="stats-graph">\W*<div class="sortkey">([0-9]*)<#g) {
+while ($translationpage =~ m#<td class="stats-name">\W*<a[^>]*>\W*<span>(\w*)</span>\W*</a>\W*</td>\W*<td class="stats-graph">\W*<div class="sortkey">([0-9]*)</div>#g) {
     push @translations, {language => "$1 ($2%)"} if ($2 > 50);
 }
 
