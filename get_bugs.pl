@@ -362,7 +362,7 @@ my %domain_map;
 open (my $domainmapfh, File::Spec->rel2abs( dirname(__FILE__) . '/gitdm/domain-map' ));
 while (<$domainmapfh>) {
     chomp $_;
-    $_ =~ m/^([^# ]*) (.*)$/;
+    $_ =~ m/^([^# ]*)\s*(.*)$/;
     $domain_map{$1} = $2;
 }
 close ($domainmapfh);
