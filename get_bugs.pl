@@ -14,10 +14,8 @@
 # You should have received a copy of the GNU General Public License along with
 # Koha; if not, write to the Free Software Foundation, Inc., 59 Temple Place,
 # Suite 330, Boston, MA  02111-1307 USA
-#
 
-use strict;
-use warnings;
+use Modern::Perl;
 
 use Pod::Usage;
 use POSIX qw(strftime);
@@ -130,7 +128,7 @@ if (-e "$reltools/descriptions/descriptions-$shortversion.csv") {
         close $fh;
 }
 
-$template    = "release_notes_tmpl".($html?"_html":"").".tt" unless $template;
+$template    = "templates/release_notes_tmpl".($html?"_html":"").".tt" unless $template;
 $rnotes      = "misc/release_notes/release_notes_${major}_${minor}_${release}.".($html?"html":"txt") unless $rnotes;
 
 my $pootle = "http://translate.koha-community.org/projects/$major$minor/";
@@ -145,7 +143,7 @@ while ($translationpage =~ m#<td class="stats-name">\W*<a[^>]*>\W*<span>(\w*)</s
 
 $arguments{translations} = \@translations;
 
-$arguments{releaseteam} = "release_team_$arguments{line}".($html?'_html':'').".tt";
+$arguments{releaseteam} = "templates/release_team_$arguments{line}".($html?'_html':'').".tt";
 
 print "Using template: $template and release notes file: $rnotes\n\n";
 
