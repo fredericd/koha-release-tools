@@ -25,7 +25,15 @@ Koha [% shortversion %] is a major release, that comes with many new features.
 Koha [% shortversion %] is a bugfix/maintenance release.
 [% END %]
 
-It includes [% nb_newfeatures %] features, [% nb_enhancements %] enhancements and [% nb_bugfixes %] bugfixes.
+[%- IF nb_newfeatures && nb_enhancements && nb_bugfixes -%]
+It includes [% nb_newfeatures %] new features, [% nb_enhancements %] enhancements and [% nb_bugfixes %] bugfixes.
+[%- ELSIF nb_newfeatures && nb_enhancements -%]
+It includes [% nb_newfeatures %] new features and [% nb_enhancements %] enhancements.
+[%- ELSIF nb_newfeatures && nb_bugfixes -%]
+It includes [% nb_newfeatures %] new features and [% nb_bugfixes %] bugfixes.
+[%- ELSIF nb_enhancements && nb_bugfixes -%]
+It includes [% nb_enhancements %] enhancements and [% nb_bugfixes %] bugfixes.
+[%- END -%]
 
 [% IF newfeatures %]
 New features in [% shortversion %]
@@ -146,6 +154,12 @@ We thank the following libraries who are known to have sponsored
 new features in Koha [% shortversion %]:
 [% FOREACH sponsor IN sponsors %]  * [% sponsor.name %][% END %]
 [%- END -%]
+
+[% IF MAJOR && new_devs %]
+We would like to congratulate the individuals who had their very first patches
+pushed during the [% shortversion %] release cycle:
+[% INSERT $new_devs %]
+[% END %]
 
 [% IF contributors -%]
 We thank the following individuals who contributed patches to Koha [% shortversion %].

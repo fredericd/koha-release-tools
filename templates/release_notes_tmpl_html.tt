@@ -1,3 +1,4 @@
+[%- SET bzurl = 'http://bugs.koha-community.org/bugzilla3/show_bug.cgi?id=' -%]
 <h1>RELEASE NOTES FOR KOHA [% shortversion %]</h1>
 <p>[% date %]</p>
 
@@ -12,68 +13,128 @@
 Koha [% shortversion %] is a bugfix/maintenance release.
 [% END %]
 
-<p>It includes [% nb_newfeatures %] new features, [% nb_enhancements %] enhancement and [% nb_bugfixes %] bugfixes.</p>
+[%- IF nb_newfeatures && nb_enhancements && nb_bugfixes -%]
+<p>It includes [% nb_newfeatures %] new features, [% nb_enhancements %] enhancements and [% nb_bugfixes %] bugfixes.</p>
+[%- ELSIF nb_newfeatures && nb_enhancements -%]
+<p>It includes [% nb_newfeatures %] new features and [% nb_enhancements %] enhancements.</p>
+[%- ELSIF nb_newfeatures && nb_bugfixes -%]
+<p>It includes [% nb_newfeatures %] new features and [% nb_bugfixes %] bugfixes.</p>
+[%- ELSIF nb_enhancements && nb_bugfixes -%]
+<p>It includes [% nb_enhancements %] enhancements and [% nb_bugfixes %] bugfixes.</p>
+[%- END -%]
 
-[% IF newfeatures %]
-<h3>New features in Koha [% shortversion %]</h3>
-[% FOREACH newfeature IN newfeatures %]
-<h4>[% newfeature.component %]</h4>
-<ul>
-[% FOREACH line IN newfeature.list %]<li>[% line.short_desc %] <i>(bug #[% line.number %])</i></li>
-<ul><p>[% line.description %]</p></ul>
-[% END %]
-</ul>
-[% END %][% END %]
+<h4>Table of contents</h4>
+<nav>
+    <ul>
+    [%- IF newfeatures -%]
+        <li><a href="#koha-features">New features</a></li>
+    [%- END -%]
+    [%- IF enhancements -%]
+        <li><a href="#koha-enhancements">Enhancements</a></li>
+    [%- END -%]
+    [%- IF highlighs -%]
+       <li><a href="#koha-critical">Critical bugfixes</a></li>
+    [%- END -%]
+    [%- IF bugfixes -%]
+        <li><a href="#koha-other">Other bugfixes</a></li>
+    [%- END -%]
+    [%- IF sysprefs -%]
+        <li><a href="#koha-sysprefs">Changes on system preferences</a></li>
+    [%- END -%]
+        <li><a href="#koha-requirements">System requirements</a></li>
+        <li><a href="#koha-docs">Documentation</a></li>
+    [%- IF translations -%]
+        <li><a href="#koha-translations">Translations</a></li>
+    [%- END -%]
+    [%- IF releaseteam -%]
+        <li><a href="#koha-release-team">Release team</a></li>
+    [%- END -%]
+        <li><a href="#koha-credits">Credits</a></li>
+        <li><a href="#koha-git">Revision control</a></li>
+        <li><a href="#koha-report-bugs">Bug and feature requests</a></li>
+    </ul>
+</nav>
 
-[% IF enhancements %]
-<h3>Enhancements in Koha [% shortversion %]</h3>
-[% FOREACH enhancement IN enhancements %]
-<h4>[% enhancement.component %]</h4>
-<ul>
-[% FOREACH line IN enhancement.list %]<li>[% line.short_desc %] <i>(bug #[% line.number %])</i></li>
-<ul><p>[% line.description %]</p></ul>
-[% END %]
-</ul>
-[% END %][% END %]
+[%- IF newfeatures -%]
+    <h3 id="koha-features">New features in Koha [% shortversion %]</h3>
+    [% FOREACH newfeature IN newfeatures %]
+    <h4>[% newfeature.component %]</h4>
+    <ul>
+        [% FOREACH line IN newfeature.list %]
+            <li>
+                [% line.short_desc %] <i>(bug <a href="[% bzurl %][% line.number %]">[% line.number %]</a>)</i>
+            </li>
+            [%- IF line.description -%]
+            <p>[% line.description %]</p>
+            [%- END -%]
+        [% END %]
+    </ul>
+    [% END %]
+[%- END -%]
+
+[%- IF enhancements -%]
+    <h3 id="koha-enhancements">Enhancements in Koha [% shortversion %]</h3>
+    [%- FOREACH enhancement IN enhancements -%]
+    <h4>[% enhancement.component %]</h4>
+    <ul>
+        [%- FOREACH line IN enhancement.list -%]
+            <li>
+                [% line.short_desc %] <i>(bug <a href="[% bzurl %][% line.number %]">[% line.number %]</a>)</i>
+            </li>
+            [%- IF line.description -%]
+            <p>[% line.description %]</p>
+            [%- END -%]
+        [%- END -%]
+    </ul>
+    [%- END -%]
+[%- END -%]
 
 
-[% IF highlights %]
-<h3>Critical bugs fixed in Koha [% shortversion %]</h3>
-[% IF MAJOR %]
-<p>(this list include all bugfixes since the previous major version. Most of them have already been fixed in maintainance releases)</p>
-[% END %]
-[% FOREACH highlight IN highlights %]
-<h4>[% highlight.component %]</h4>
-<ul>
-[% FOREACH line IN highlight.list %]<li>[% line.short_desc %] <i>([% line.severity %] - [% line.number %])</i></li>
-[% END %]
-</ul>
-[% END %][% END %]
+[%- IF highlights -%]
+    <h3 id="koha-critical">Critical bugs fixed in Koha [% shortversion %]</h3>
+    [%- IF MAJOR -%]
+    <p>(this list include all bugfixes since the previous major version. Most of them have already been fixed in maintainance releases)</p>
+    [%- END -%]
+    [%- FOREACH highlight IN highlights -%]
+    <h4>[% highlight.component %]</h4>
+    <ul>
+        [%- FOREACH line IN highlight.list -%]
+        <li>
+            [% line.short_desc %] <i>([% line.severity %] - bug <a href="[% bzurl %][% line.number %]">[% line.number %]</a>)</i>
+        </li>
+        [%- END -%]
+    </ul>
+    [%- END -%]
+[%- END -%]
 
-[% IF bugfixes %]
-<h3>Other bugs fixed in Koha [% shortversion %]</h3>
-[% IF MAJOR %]
-<p>(this list include all bugfixes since the previous major version. Most of them have already been fixed in maintainance releases)</p>
+[%- IF bugfixes -%]
+    <h3 id="koha-other">Other bugs fixed in Koha [% shortversion %]</h3>
+    [%- IF MAJOR -%]
+    <p>(this list include all bugfixes since the previous major version. Most of them have already been fixed in maintainance releases)</p>
+    [%- END -%]
+
+    [%- FOREACH bugfix IN bugfixes -%]
+    <h4>[% bugfix.component %]</h4>
+    <ul>
+        [%- FOREACH line IN bugfix.list -%]
+          <li>
+            [% line.short_desc %] <i>([% line.severity %] - bug <a href="[% bzurl %][% line.number %]">[% line.number %]</a>)</i>
+          </li>
+        [%- END -%]
+    </ul>
+    [%- END -%]
+[%- END -%]
+
+[%- IF sysprefs -%]
+    <h3 id="koha-sysprefs">New system preferences in Koha [% shortversion %]</h3>
+    <ul>
+    [%- FOREACH syspref IN sysprefs -%]
+        <li>[% syspref.name %]</li>
+    [%- END -%]
+    </ul>
 [% END %]
 
-[% FOREACH bugfix IN bugfixes %]
-<h4>[% bugfix.component %]</h4>
-<ul>
-[% FOREACH line IN bugfix.list %]<li>[% line.short_desc %]<i>([% line.severity %]- [% line.number %])</i></li>
-[% END %]
-</ul>
-[% END %][% END %]
-
-[%- IF sysprefs %]
-<h3>New system preferences in Koha [% shortversion %]</h3>
-<ul>
-[% FOREACH syspref IN sysprefs %]
-<li>[% syspref.name %]</li>
-[% END %]
-</ul>
-[% END %]
-
-<h3>System requirements</h3>
+<h3 id="koha-requirements">System requirements</h3>
 <p>Important notes:</p>
 <ul>
 <li>Perl 5.10 is required</li>
@@ -81,14 +142,14 @@ Koha [% shortversion %] is a bugfix/maintenance release.
 </ul>
 
 
-<h3>Documentation</h3>
+<h3 id="koha-docs">Documentation</h3>
 
 <p>The Koha manual is maintained in DocBook. The home page for Koha documentation is <a href="http://koha-community.org/documentation/">http://koha-community.org/documentation</a></p>
 <p>As of the date of these release notes, only the English version of the Koha manual is available at <a href="http://manual.koha-community.org/[% shortversion %]/en/">http://manual.koha-community.org/[% shortversion %]/en/</a></p>
 <p>The Git repository for the Koha manual can be found at  <a href="http://git.koha-community.org/gitweb/?p=kohadocs.git;a=summary">http://git.koha-community.org/gitweb/?p=kohadocs.git;a=summary</a></p>
 
 [%- IF translations %]
-<h3>Translations</h3>
+<h3 id="koha-translations">Translations</h3>
 <p>Complete or near-complete translations of the OPAC and staff interface are available in this release for the following languages:</p>
 <ul>
 [% FOREACH translation IN translations %]
@@ -105,13 +166,14 @@ Koha [% shortversion %] is a bugfix/maintenance release.
 <p>The most up-to-date translations can be found at <a href="http://translate.koha-community.org/">http://translate.koha-community.org</a></p>
 
 [% IF releaseteam %]
-<h3>Release Team</h3>
+<h3 id="koha-release-team">Release Team</h3>
 
 The release team for Koha [% shortversion %] is
 
 [% INSERT $releaseteam %]
 [% END %]
-<h3>Credits</h3>
+
+<h3 id="koha-credits">Credits</h3>
 
 [% IF sponsors %]
 <p>We thank the following libraries who are known to have sponsored new features in Koha [% shortversion %]:</p>
@@ -129,6 +191,11 @@ The release team for Koha [% shortversion %] is
 <li>[% contributor.name %]</li>
 [% END %]
 </ul>
+[% END %]
+
+[% IF MAJOR && new_devs %]
+<p>We would like to congratulate the individuals who had their very first patches pushed during the [% shortversion %] release cycle:</p>
+    [% INSERT $new_devs %]
 [% END %]
 
 [% IF companies %]
@@ -152,7 +219,7 @@ The release team for Koha [% shortversion %] is
 
 <p>We regret any omissions.  If a contributor has been inadvertently missed, please send a patch against these release notes to  koha-patches@lists.koha-community.org.</p>
 
-<h3>Revision control notes</h3>
+<h3 id="koha-git">Revision control notes</h3>
 
 <p>The Koha project uses Git for version control.  The current development version of Koha can be retrieved by checking out the master branch of <a href="git://git.koha-community.org/koha.git">git://git.koha-community.org/koha.git</a></p>
 
@@ -161,7 +228,7 @@ The release team for Koha [% shortversion %] is
 [% UNLESS MAJOR %]
 <p>The last Koha release was [% lastrelease %], which was released on [% lastreleasedate %].</p>
 [% END %]
-<h3>Bugs and feature requests</h3>
+<h3 id="koha-report-bugs">Bugs and feature requests</h3>
 
 <p>Bug reports and feature requests can be filed at the Koha bug tracker at <a href="http://bugs.koha-community.org/">http://bugs.koha-community.org</a></p>
 

@@ -144,6 +144,7 @@ while ($translationpage =~ m#<td class="stats-name">\W*<a[^>]*>\W*<span>(\w*)</s
 $arguments{translations} = \@translations;
 
 $arguments{releaseteam} = "templates/release_team_$arguments{line}".($html?'_html':'').".tt";
+$arguments{new_devs}    = "templates/new_devs_$arguments{line}".($html?'_html':'').".tt";
 
 print "Using template: $template and release notes file: $rnotes\n\n";
 
