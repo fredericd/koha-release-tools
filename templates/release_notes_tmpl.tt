@@ -149,34 +149,39 @@ The release team for Koha [% shortversion %] is
 Credits
 ======================
 
-[% IF sponsors -%]
+[% IF sponsors %]
 We thank the following libraries who are known to have sponsored
 new features in Koha [% shortversion %]:
-[% FOREACH sponsor IN sponsors %]  * [% sponsor.name %][% END %]
-[%- END -%]
 
-[% IF MAJOR && new_devs %]
+[%- FOREACH sponsor IN sponsors -%]
+  * [% sponsor.name %][%- END -%]
+[% END %]
+
+[%- IF contributors -%]
+We thank the following individuals who contributed patches to Koha [% shortversion %].
+[% FOREACH contributor IN contributors %]
+  * [% contributor.name %] ([% contributor.commits %])[%- END -%][% END %]
+
+[%- IF MAJOR && new_devs -%]
+
 We would like to congratulate the individuals who had their very first patches
 pushed during the [% shortversion %] release cycle:
-[% INSERT $new_devs %]
-[% END %]
 
-[% IF contributors -%]
-We thank the following individuals who contributed patches to Koha [% shortversion %].
-[% FOREACH contributor IN contributors %]  * [% contributor.name %][% END %]
-[%- END -%]
+[% INSERT $new_devs %][% END %]
 
-[% IF companies -%]
+[%- IF companies -%]
+
 We thank the following companies who contributed patches to Koha [% shortversion %]
-[% FOREACH company IN companies %]  * [% company.name %]
+[% FOREACH company IN companies %]
+  * [% company.name %] ([% company.commits %])[% END %]
 [% END %]
-[%- END -%]
 
-[% IF signers -%]
+[%- IF signers -%]
 We also especially thank the following individuals who tested patches
 for Koha [% shortversion %].
-[% FOREACH signer IN signers %]  * [% signer.name %][% END %]
-[%- END -%]
+[% FOREACH signer IN signers %]
+  * [% signer.name %] ([% signer.signoffs %])[%- END -%]
+[% END %]
 
 We regret any omissions.  If a contributor has been inadvertently missed,
 please send a patch against these release notes to 

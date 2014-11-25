@@ -188,7 +188,7 @@ The release team for Koha [% shortversion %] is
 <p>We thank the following individuals who contributed patches to Koha [% shortversion %].</p>
 <ul>
 [% FOREACH contributor IN contributors %]
-<li>[% contributor.name %]</li>
+<li>[% contributor.name %] ([% contributor.commits %])</li>
 [% END %]
 </ul>
 [% END %]
@@ -202,7 +202,7 @@ The release team for Koha [% shortversion %] is
 <p>We thank the following companies who contributed patches to Koha [% shortversion %]</p>
 <ul>
 [% FOREACH company IN companies %]
-<li>[% company.name %]</li>
+<li>[% company.name %] ([% company.commits %])</li>
 [% END %]
 </ul>
 [% END %]
@@ -212,7 +212,7 @@ The release team for Koha [% shortversion %] is
 <p>We also especially thank the following individuals who tested patches for Koha [% shortversion %].</p>
 <ul>
 [% FOREACH signer IN signers %]
-<li>[% signer.name %]</li>
+<li>[% signer.name %] ([% signer.signoffs %])</li>
 [% END %]
 </ul>
 [% END %]

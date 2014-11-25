@@ -337,18 +337,21 @@ foreach my $key (sort keys %current_sysprefs) {
 $arguments{sysprefs} = \@sysprefs;
 
 # Now we'll alphabetize the contributors based on surname (or at least the last word on their line)
-# WARNING!!! Obfuscation ahead!!!
 my @contribs;
-my @contributor_list = map { { name => $_->[1]} }
-    sort { $a->[0] cmp $b->[0] }
-    map { [(split /\s+/, $_)[scalar(@contribs = split /\s+/, $_)-1], $_] }
-    qx(git log --pretty=short $tag..$HEAD | git shortlog -s | sort -k3 -);
+my @contributor_list;
+open my $contribs_lines, '-|', "git log --pretty=short $tag..$HEAD | git shortlog -s | sort -k3 -";
+while ( my $line  = <$contribs_lines> ) {
+    my ( $commits, $name ) = $line =~ /\s*(\d*)\s*(.*)\s*$/;
+    push @contributor_list, { name => $name, commits => $commits } ;
+}
 
 my @signers;
-my @signer_list = map { { name => $_->[1]} }
-    sort { $a->[0] cmp $b->[0] }
-    map { [(split /\s+/, $_)[scalar(@signers = split /\s+/, $_)-1], $_] }
-    qx(git log $tag..$HEAD | grep 'Signed-off-by' | sed -e 's/^.*Signed-off-by: //' | sed -e 's/ <.*\$//' | sort -k3 - | uniq -c);
+my @signer_list;
+open my $sign_lines, '-|', "git log $tag..$HEAD | grep 'Signed-off-by' | sed -e 's/^.*Signed-off-by: //' | sed -e 's/ <.*\$//' | sort -k3 - | uniq -c";
+while ( my $line  = <$sign_lines> ) {
+    my ( $signoffs, $name ) = $line =~ /\s*(\d*)\s*(.*)\s*$/;
+    push @signer_list, { name => $name, signoffs => $signoffs } ;
+}
 
 my @sponsor_list = map { {name => $_} }
             qx(git log $tag..$HEAD | grep 'Sponsored-by' | sed -e 's/^.*Sponsored-by: //' | sort | uniq);
@@ -385,7 +388,7 @@ foreach (map { {name => $_->[1]} }
     }
 my @companies_list;
 foreach (sort {$a cmp $b} keys %companies_list) {
-    push @companies_list, {name => sprintf("% 7d %s", $companies_list{$_}, $_)};
+    push @companies_list, { name => $_, commits => $companies_list{$_} };
 }
 
 $arguments{contributors} = \@contributor_list;
