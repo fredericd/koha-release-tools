@@ -171,7 +171,9 @@ pushed during the [% shortversion %] release cycle:
 
 [%- IF companies -%]
 
-We thank the following companies who contributed patches to Koha [% shortversion %]
+We thank the following libraries, companies, and other institutions who contributed
+patches to Koha [% shortversion %]
+
 [% FOREACH company IN companies %]
   * [% company.name %] ([% company.commits %])[% END %]
 [% END %]
@@ -186,7 +188,6 @@ for Koha [% shortversion %].
 We regret any omissions.  If a contributor has been inadvertently missed,
 please send a patch against these release notes to 
 koha-patches@lists.koha-community.org.
-
 
 Revision control notes
 ======================

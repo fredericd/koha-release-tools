@@ -89,7 +89,6 @@ Koha [% shortversion %] is a bugfix/maintenance release.
     [%- END -%]
 [%- END -%]
 
-
 [%- IF highlights -%]
     <h3 id="koha-critical">Critical bugs fixed in Koha [% shortversion %]</h3>
     [%- IF MAJOR -%]
@@ -137,8 +136,8 @@ Koha [% shortversion %] is a bugfix/maintenance release.
 <h3 id="koha-requirements">System requirements</h3>
 <p>Important notes:</p>
 <ul>
-<li>Perl 5.10 is required</li>
-<li>Zebra is required</li>
+    <li>Perl 5.10 is required</li>
+    <li>Zebra is required</li>
 </ul>
 
 
@@ -185,7 +184,7 @@ The release team for Koha [% shortversion %] is
 [% END %]
 
 [% IF contributors %]
-<p>We thank the following individuals who contributed patches to Koha [% shortversion %].</p>
+<p>We thank the following individuals who contributed patches to Koha [% shortversion %]:</p>
 <ul>
 [% FOREACH contributor IN contributors %]
 <li>[% contributor.name %] ([% contributor.commits %])</li>
@@ -199,7 +198,7 @@ The release team for Koha [% shortversion %] is
 [% END %]
 
 [% IF companies %]
-<p>We thank the following companies who contributed patches to Koha [% shortversion %]</p>
+<p>We thank the following libraries, companies, and other institutions who contributed patches to Koha [% shortversion %]:</p>
 <ul>
 [% FOREACH company IN companies %]
 <li>[% company.name %] ([% company.commits %])</li>
@@ -207,9 +206,8 @@ The release team for Koha [% shortversion %] is
 </ul>
 [% END %]
 
-
 [% IF signers %]
-<p>We also especially thank the following individuals who tested patches for Koha [% shortversion %].</p>
+<p>We also especially thank the following individuals who tested patches for Koha [% shortversion %]:</p>
 <ul>
 [% FOREACH signer IN signers %]
 <li>[% signer.name %] ([% signer.signoffs %])</li>
