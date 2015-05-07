@@ -28,27 +28,27 @@ Koha [% shortversion %] is a bugfix/maintenance release.
     <ul>
     [%- IF newfeatures -%]
         <li><a href="#koha-features">New features</a></li>
-    [%- END -%]
+    [% END %]
     [%- IF enhancements -%]
         <li><a href="#koha-enhancements">Enhancements</a></li>
-    [%- END -%]
+    [% END %]
     [%- IF highlighs -%]
        <li><a href="#koha-critical">Critical bugfixes</a></li>
-    [%- END -%]
+    [% END %]
     [%- IF bugfixes -%]
         <li><a href="#koha-other">Other bugfixes</a></li>
     [%- END -%]
-    [%- IF sysprefs -%]
+    [% IF sysprefs %]
         <li><a href="#koha-sysprefs">Changes on system preferences</a></li>
-    [%- END -%]
+    [% END %]
         <li><a href="#koha-requirements">System requirements</a></li>
         <li><a href="#koha-docs">Documentation</a></li>
     [%- IF translations -%]
         <li><a href="#koha-translations">Translations</a></li>
-    [%- END -%]
+    [% END %]
     [%- IF releaseteam -%]
         <li><a href="#koha-release-team">Release team</a></li>
-    [%- END -%]
+    [% END %]
         <li><a href="#koha-credits">Credits</a></li>
         <li><a href="#koha-git">Revision control</a></li>
         <li><a href="#koha-report-bugs">Bug and feature requests</a></li>
@@ -127,7 +127,7 @@ Koha [% shortversion %] is a bugfix/maintenance release.
 [%- IF sysprefs -%]
     <h3 id="koha-sysprefs">New system preferences in Koha [% shortversion %]</h3>
     <ul>
-    [%- FOREACH syspref IN sysprefs -%]
+    [% FOREACH syspref IN sysprefs %]
         <li>[% syspref.name %]</li>
     [%- END -%]
     </ul>
