@@ -131,7 +131,7 @@ if (-e "$reltools/descriptions/descriptions-$shortversion.csv") {
 $template    = "templates/release_notes_tmpl".($html?"_html":"").".tt" unless $template;
 $rnotes      = "misc/release_notes/release_notes_${major}_${minor}_${release}.".($html?"html":"txt") unless $rnotes;
 
-my $pootle = "http://translate.koha-community.org/projects/$major$minor/";
+my $pootle = "http://translate.koha-community.org/projects/$major.$minor/";
 $pootle = "http://translate.koha-community.org/" unless defined(get($pootle));
 
 my $translationpage = get($pootle);
