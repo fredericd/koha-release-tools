@@ -59,7 +59,7 @@ Enhancements in [% shortversion %]
 Critical bugs fixed in [% shortversion %]
 ======================
 [% IF MAJOR %]
-(this list include all bugfixes since the previous major version. Most of them have already been fixed in maintainance releases)
+(this list includes all bugfixes since the previous major version. Most of them have already been fixed in maintainance releases)
 [% END %]
 [% FOREACH highlight IN highlights %]
 [% highlight.component %]
@@ -71,7 +71,7 @@ Critical bugs fixed in [% shortversion %]
 Other bugs fixed in [% shortversion %]
 ======================
 [% IF MAJOR %]
-(this list include all bugfixes since the previous major version. Most of them have already been fixed in maintainance releases)
+(this list includes all bugfixes since the previous major version. Most of them have already been fixed in maintainance releases)
 [% END %]
 [% FOREACH bugfix IN bugfixes %]
 [% bugfix.component %]
