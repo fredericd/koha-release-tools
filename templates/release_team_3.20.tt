@@ -1,14 +1,14 @@
   Release Manager:       Tomás Cohen Arazi <tomascohen@gmail.com>
   QA Manager:            Katrin Fischer <Katrin.Fischer@bsz-bw.de>
-  Documentation Manager: Nicole C Engard <nengard@gmail.com>
+  Documentation Manager: Nicole C. Engard <nengard@gmail.com>
   Translation Manager:   Bernardo Gonzalez Kriegel <bgkriegel@gmail.com>
   QA Team:               Jonathan Druart <jonathan.druart@biblibre.com>
                          Brendan Gallagher <brendan@bywatersolutions.com>
                          Kyle Hall <kyle@bywatersolutions.com>
                          Paul Poulain <paul.poulain@biblibre.com>
                          Martin Renvoize <martin.renvoize@ptfs-europe.com>
-                         Marcel de Rooy <M.de.Rooy@rijksmuseum.nl>
-  Bug Wranglers:         Magnus Enger <magnus@enger.priv.no>
+                         Marcel de Rooy <m.de.rooy@rijksmuseum.nl>
+  Bug Wrangler:          Magnus Enger <magnus@enger.priv.no>
   Packaging Manager:     Robin Sheat <robin@catalyst.net.nz>
 
   Release Maintainer (3.18.x): Chris Cormack <chrisc@catalyst.net.nz>

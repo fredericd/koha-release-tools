@@ -1,22 +1,22 @@
 <ul>
-    <li>Release Manager: Tomás Cohen Arazi <tomascohen@gmail.com></li>
-    <li>QA Manager: Katrin Fischer <Katrin.Fischer@bsz-bw.de></li>
-    <li>Documentation Manager: Nicole C Engard <nengard@gmail.com></li>
-    <li>Translation Manager: Bernardo Gonzalez Kriegel <bgkriegel@gmail.com></li>
-    </li>QA Team:
+    <li>Release Manager: <a href="mailto:tomascohen@gmail.com">Tomás Cohen Arazi</a></li>
+    <li>QA Manager: <a href="mailto:Katrin.Fischer@bsz-bw.de">Katrin Fischer</a></li>
+    <li>Documentation Manager: <a href="mailto:nengard@gmail.com">Nicole C. Engard</a></li>
+    <li>Translation Manager: <a href="mailto:bgkriegel@gmail.com">Bernardo Gonzalez Kriegel</a></li>
+    <li>QA Team:
         <ul>
-            <li>Jonathan Druart <jonathan.druart@biblibre.com></li>
-            <li>Brendan Gallagher <brendan@bywatersolutions.com></li>
-            <li>Kyle Hall <kyle@bywatersolutions.com></li>
-            <li>Paul Poulain <paul.poulain@biblibre.com></li>
-            <li>Martin Renvoize <martin.renvoize@ptfs-europe.com></li>
-            <li>Marcel de Rooy <M.de.Rooy@rijksmuseum.nl></li>
+            <li><a href="mailto:jonathan.druart@biblibre.com">Jonathan Druart</a></li>
+            <li><a href="mailto:brendan@bywatersolutions.com">Brendan Gallagher</a></li>
+            <li><a href="mailto:kyle@bywatersolutions.com">Kyle Hall</a></li>
+            <li><a href="mailto:paul.poulain@biblibre.com">Paul Poulain</a></li>
+            <li><a href="mailto:martin.renvoize@ptfs-europe.com">Martin Renvoize</a></li>
+            <li><a href="mailto:m.de.rooy@rijksmuseum.nl">Marcel de Rooy</a></li>
         </ul>
     </li>
-    <li>Bug Wrangler: Magnus Enger <magnus@enger.priv.no></li>
-    <li>Packaging Manager: Robin Sheat <robin@catalyst.net.nz></li>
+    <li>Bug Wrangler: <a href="mailto:magnus@enger.priv.no">Magnus Enger</a></li>
+    <li>Packaging Manager: <a href="mailto:robin@catalyst.net.nz">Robin Sheat</a></li>
 
-    <li>Release Maintainer (3.18.x): Chris Cormack <chrisc@catalyst.net.nz></li>
-    <li>Release Maintainer (3.16.x): Mason James <mtj@kohaaloha.com></li>
-    <li>Release Maintainer (3.14.x): Fridolin Somers <fridolin.somers@biblibre.com></li>
+    <li>Release Maintainer (3.18.x): <a href="mailto:chrisc@catalyst.net.nz">Chris Cormack</a></li>
+    <li>Release Maintainer (3.16.x): <a href="mailto:mtj@kohaaloha.com">Mason James</a></li>
+    <li>Release Maintainer (3.14.x): <a href="mailto:fridolin.somers@biblibre.com">Fridolin Somers</a></li>
 </ul>

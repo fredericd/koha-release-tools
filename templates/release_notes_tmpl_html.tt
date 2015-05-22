@@ -1,6 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  [%- IF MAJOR -%]
+    <title>Release notes for Koha [% minorversion %]</title>
+  [%- ELSE -%]
+    <title>Release notes for Koha [% shortversion %]</title>
+  [%- END -%]
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+
 [%- SET bzurl = 'http://bugs.koha-community.org/bugzilla3/show_bug.cgi?id=' -%]
-<h1>RELEASE NOTES FOR KOHA [% shortversion %]</h1>
-<p>[% date %]</p>
+[%- IF MAJOR -%]
+<h1>Release notes for Koha [% minorversion %]</h1>
+[%- ELSE -%]
+<h1>Release notes for Koha [% shortversion %]</h1>
+[%- END -%]
+
+  <p>[% date %]</p>
 
 <p>Koha is the first free and open source software library automation package  (ILS). Development is sponsored by libraries of varying types and sizes,  volunteers, and support companies from around the world.</p>
 <p>The website for the Koha project is <a href="http://koha-community.org/">http://koha-community.org</a> and Koha [% shortversion %] can be downloaded from: <a href="[% downloadlink %]">[% downloadlink %]</a></p>
@@ -8,7 +26,7 @@
 <p>Installation instructions can be found at <a href="http://wiki.koha-community.org/wiki/Installation_Documentation">http://wiki.koha-community.org/wiki/Installation_Documentation</a> or in the INSTALL files that come in the tarball</p>
 
 [% IF MAJOR %]
-<p>Koha [% shortversion %] is a major release, that comes with many new features.</p>
+<p>Koha [% minorversion %] is a major release, that comes with many new features.</p>
 [% ELSE %]
 Koha [% shortversion %] is a bugfix/maintenance release.
 [% END %]
@@ -117,7 +135,7 @@ Koha [% shortversion %] is a bugfix/maintenance release.
     <ul>
         [%- FOREACH line IN bugfix.list -%]
           <li>
-            [% line.short_desc %] <i>([% line.severity %] - bug <a href="[% bzurl %][% line.number %]">[% line.number %]</a>)</i>
+            [% line.short_desc | html %] <i>([% line.severity %] - bug <a href="[% bzurl %][% line.number %]">[% line.number %]</a>)</i>
           </li>
         [%- END -%]
     </ul>
@@ -201,7 +219,7 @@ The release team for Koha [% shortversion %] is
 <p>We thank the following libraries, companies, and other institutions who contributed patches to Koha [% shortversion %]:</p>
 <ul>
 [% FOREACH company IN companies %]
-<li>[% company.name %] ([% company.commits %])</li>
+<li>[% company.name | html %] ([% company.commits %])</li>
 [% END %]
 </ul>
 [% END %]
@@ -210,7 +228,7 @@ The release team for Koha [% shortversion %] is
 <p>We also especially thank the following individuals who tested patches for Koha [% shortversion %]:</p>
 <ul>
 [% FOREACH signer IN signers %]
-<li>[% signer.name %] ([% signer.signoffs %])</li>
+<li>[% signer.name | html %] ([% signer.signoffs %])</li>
 [% END %]
 </ul>
 [% END %]
@@ -232,3 +250,6 @@ The release team for Koha [% shortversion %] is
 
 <p>He rau ringa e oti ai. (Many hands finish the work)</p>
 [% timestamp %]
+
+  </body>
+</html>
