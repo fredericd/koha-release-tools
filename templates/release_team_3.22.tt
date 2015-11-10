@@ -1,0 +1,32 @@
+  Release Manager:       Tomás Cohen Arazi <tomascohen@gmail.com>
+
+  QA Manager:            Katrin Fischer <Katrin.Fischer@bsz-bw.de>
+
+  QA Team:               Jonathan Druart <jonathan.druart@bugs.koha-community.org>
+                         Brendan Gallagher <brendan@bywatersolutions.com>
+                         Kyle Hall <kyle@bywatersolutions.com>
+                         Paul Poulain <paul.poulain@biblibre.com>
+                         Martin Renvoize <martin.renvoize@ptfs-europe.com>
+                         Marcel de Rooy <m.de.rooy@rijksmuseum.nl>
+
+  Bug Wranglers:         Amit Gupta <amitddng135@gmail.com>
+                         Indranil Das Gupta <indradg@l2c2.co.in>
+                         Eivin Giske Skaaren <eivin@sysmystic.com>
+                         Zeno Tajoli <z.tajoli@cineca.it>
+                         Mirko Tietgen <mirko@abunchofthings.net>
+                         Marc Veron <veron@veron.ch>
+
+  Packaging Manager:     Robin Sheat <robin@catalyst.net.nz>
+
+  Documentation Manager: Nicole C. Engard <nengard@gmail.com>
+
+  Translation Manager:   Bernardo Gonzalez Kriegel <bgkriegel@gmail.com>
+
+  Wiki curators:         Thomas Dukleth <kohadevel@agogme.com>
+                         Indranil Das Gupta <indradg@l2c2.co.in>
+                         Brooke Johnson <abesottedphoenix@yahoo.com>
+
+  Release Maintainer (3.20.x): Chris Cormack <chrisc@catalyst.net.nz>
+  Release Maintainer (3.18.x): Liz Rea <liz@catalyst.net.nz>
+  Release Maintainer (3.16.x): Mason James <mtj@kohaaloha.com>
+  Release Maintainer (3.14.x): Fridolin Somers <fridolin.somers@biblibre.com>

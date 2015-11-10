@@ -1,0 +1,38 @@
+<ul>
+    <li>Release Manager: <a href="mailto:tomascohen@gmail.com">Tomás Cohen Arazi</a></li>
+    <li>QA Manager: <a href="mailto:Katrin.Fischer@bsz-bw.de">Katrin Fischer</a></li>
+    <li>QA Team:
+        <ul>
+            <li><a href="mailto:jonathan.druart@bugs.koha-community.org">Jonathan Druart</a></li>
+            <li><a href="mailto:brendan@bywatersolutions.com">Brendan Gallagher</a></li>
+            <li><a href="mailto:kyle@bywatersolutions.com">Kyle Hall</a></li>
+            <li><a href="mailto:paul.poulain@biblibre.com">Paul Poulain</a></li>
+            <li><a href="mailto:martin.renvoize@ptfs-europe.com">Martin Renvoize</a></li>
+            <li><a href="mailto:m.de.rooy@rijksmuseum.nl">Marcel de Rooy</a></li>
+        </ul>
+    </li>
+    <li>Bug Wranglers:
+        <ul>
+            <li><a href="mailto:amitddng135@gmail.com">Amit Gupta</a></li>
+            <li><a href="mailto:indradg@l2c2.co.in">Indranil Das Gupta</a></li>
+            <li><a href="mailto:eivin@sysmystic.com">Eivin Giske Skaaren</a></li>
+            <li><a href="mailto:z.tajoli@cineca.it">Zeno Tajoli</a></li>
+            <li><a href="mailto:mirko@abunchofthings.net">Mirko Tietgen</a></li>
+            <li><a href="mailto:veron@veron.ch">Marc Veron</a></li>
+        </ul>
+    </li>
+    <li>Packaging Manager: <a href="mailto:robin@catalyst.net.nz">Robin Sheat</a></li>
+    <li>Documentation Manager: <a href="mailto:nengard@gmail.com">Nicole C. Engard</a></li>
+    <li>Translation Manager: <a href="mailto:bgkriegel@gmail.com">Bernardo Gonzalez Kriegel</a></li>
+    <li>Wiki curators:
+        <ul>
+            <li><a href="mailto:kohadevel@agogme.com">Thomas Dukleth</a></li>
+            <li><a href="mailto:indradg@l2c2.co.in">Indranil Das Gupta</a></li>
+            <li><a href="mailto:abesottedphoenix@yahoo.com">Brooke Johnson</a></li>
+        </ul>
+    </li>
+    <li>Release Maintainer (3.20.x): <a href="mailto:chrisc@catalyst.net.nz">Chris Cormack</a></li>
+    <li>Release Maintainer (3.18.x): <a href="mailto:liz@catalyst.net.nz">Liz Rea</a></li>
+    <li>Release Maintainer (3.16.x): <a href="mailto:mtj@kohaaloha.com">Mason James</a></li>
+    <li>Release Maintainer (3.14.x): <a href="mailto:fridolin.somers@biblibre.com">Fridolin Somers</a></li>
+</ul>
