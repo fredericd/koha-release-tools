@@ -214,7 +214,9 @@ if (scalar @bug_list) {
     while (scalar @csv_file) {
         $csv->parse(shift @csv_file);
         my @fields = $csv->fields;
-        $fields[2] = ucfirst($fields[2]);
+        $fields[2] = ucfirst( $fields[2] )
+            unless ( $fields[2] =~ m/^koha-/  # it's a koha-* script
+                  or $fields[2] =~ m/^t\// ); # it's about tests in t/
         if ($fields[1] =~ m/(blocker|critical|major)/) {
             if ($current_highlight && $fields[3] ne $current_highlight) {
                 my @t=@component_highlights;
