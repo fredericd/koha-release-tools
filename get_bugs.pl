@@ -21,6 +21,8 @@ use Pod::Usage;
 use POSIX qw(strftime);
 use LWP::Simple;
 use Text::CSV;
+use Encode qw/encode/;
+use HTML::TableExtract;
 use Getopt::Long;
 use Template;
 use File::Basename;
@@ -141,8 +143,16 @@ $pootle = "http://translate.koha-community.org/" unless defined(get($pootle));
 my $translationpage = get($pootle);
 my @translations = ( {language => 'English (USA)'} );
 
-while ($translationpage =~ m#<td class="stats-name">\W*<a[^>]*>\W*<span>(\w*)</span>\W*</a>\W*</td>\W*<td class="stats-graph">\W*<div class="sortkey">([0-9]*)</div>#g) {
-    push @translations, {language => "$1 ($2%)"} if ($2 > 50);
+my $translations_parser = HTML::TableExtract->new(
+    headers => [ "Name", "Progress", "Total", "Need Translation", "Last Activity" ]
+);
+$translations_parser->parse(encode('UTF-8',$translationpage));
+
+foreach my $language ($translations_parser->rows) {
+    next if !defined $language;
+    my $name = trim( @$language[0] );
+    my $progress = trim( @$language[1] );
+    push @translations, { language => "$name ($progress%)"} if ($progress > 50);
 }
 
 $arguments{translations} = \@translations;
