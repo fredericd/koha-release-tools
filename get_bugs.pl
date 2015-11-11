@@ -40,6 +40,13 @@ use Text::CSV; # used to store bugzilla full descriptions
 
 #release_notes_3_6_0.txt
 
+
+sub trim {
+    my ($s) = @_;
+    $s =~ s/^\s*(.*?)\s*$/$1/s;
+    return $s;
+}
+
 # try to retrieve the current version number from kohaversion.pl
 my $version = undef;
 eval {
