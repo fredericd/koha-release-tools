@@ -1,0 +1,343 @@
+---
+# Koha master version.
+# Used to retrieve the current release team in 'team' parameter.
+master: 3.24
+# login/password are also retrieved from environment variable:
+# POOTLE_login and POOTLE_password.
+# Here login=0 => no authentification to BZ
+pootle:
+    url: http://translate.koha-community.org
+    login: 0
+    password: 0
+# login/password are also retrieved from environment variable:
+# BZ_login and BZ_password.
+# Here login=0 => no authentification to BZ
+bz:
+  url: https://bugs.koha-community.org/bugzilla3
+  login: 0
+  password: 0
+team:
+  3.16:
+    manager:
+      name: Galen Charlton
+      email: gmc@esilibrary.com
+    qa:
+      - name: Katrin Fischer
+        email: Katrin.Fischer@bsz-bw.de
+      - name: Ruth Bavousett
+        email: druthb@gmail.com
+      - name: Chris Cormack
+        email: chrisc@catalyst.net.nz
+      - name: Marcel de Rooy
+        email: m.de.rooy@rijksmuseum.nl
+      - name: Jonathan Druart
+        email: jonathan.druart@biblibre.com
+      - name: Brendan Gallagher
+        email: brendan@bywatersolutions.com
+      - name: Kyle Hall
+        email: kyle@bywatersolutions.com
+      - name: Paul Poulain
+        email: paul.poulain@biblibre.com
+      - name: Martin Renvoize
+        email: martin.renvoize@ptfs-europe.com
+    documentation:
+      name: Nicole C. Engard
+      email: nengard@gmail.com
+    translation:
+      name: Bernardo Gonzalez Kriegel
+      email: bgkriegel@gmail.com
+    bugwrangler:
+      - name: Chris Cormack
+        email: chrisc@catalyst.net.nz
+      - name: Magnus Enger
+        email: magnus@enger.priv.no
+    packaging:
+      name: Robin Sheat
+      email: robin@catalyst.net.nz
+    vm:
+      name: Samuel Desseaux
+      email: samuel.desseaux@ecp.fr
+    database:
+      - name: Joy Nelson
+        email: joy@bywatersolutions.com
+      - name: Samuel Desseaux
+        email: samuel.desseaux@ecp.fr
+    maintainer:
+      - version: 3.16
+        name: Galen Charlton
+        email: gmc@esilibrary.com
+      - version: 3.14
+        name: Fridolin Somers
+        email: fridolin.somers@biblibre.com
+      - version: 3.12
+        name: Kyle Hall
+        email: kyle@bywatersolutions.com
+  3.18:
+    manager:
+      name: Tomás Cohen Arazi
+      email: tomascohen@gmail.com
+    qa:
+      - name: Katrin Fischer
+        email: Katrin.Fischer@bsz-bw.de
+      - name: Galen Charlton
+        email: gmc@esilibrary.com
+      - name: Jonathan Druart
+        email: jonathan.druart@biblibre.com
+      - name: Brendan Gallagher
+        email: brendan@bywatersolutions.com
+      - name: Kyle Hall
+        email: kyle@bywatersolutions.com
+      - name: Julian Maurice
+        email: julian.maurice@biblibre.com
+      - name: Paul Poulain
+        email: paul.poulain@biblibre.com
+      - name: Martin Renvoize
+        email: martin.renvoize@ptfs-europe.com
+      - name: Marcel de Rooy
+        email: m.de.rooy@rijksmuseum.nl
+    documentation:
+      name: Nicole C. Engard
+      email: nengard@gmail.com
+    translation:
+      name: Bernardo Gonzalez Kriegel
+      email: bgkriegel@gmail.com
+    bugwrangler:
+      - name: Alex Sassmannshausen
+        email: alex.sassmannshausen@ptfs-europe.com
+      - name: Zeno Tajoli
+        email: z.tajoli@cineca.it
+    packaging:
+      name: Robin Sheat
+      email: robin@catalyst.net.nz
+    maintainer:
+      - version: 3.16
+        name: Galen Charlton
+        email: gmc@esilibrary.com
+      - version: 3.14
+        name: Fridolin Somers
+        email: fridolin.somers@biblibre.com
+      - version: 3.12
+        name: Kyle Hall
+        email: kyle@bywatersolutions.com
+  3.20:
+    manager:
+      name: Tomás Cohen Arazi
+      email: tomascohen@gmail.com
+    qa:
+      - name: Katrin Fischer
+        email: Katrin.Fischer@bsz-bw.de
+      - name: Jonathan Druart
+        email: jonathan.druart@biblibre.com
+      - name: Brendan Gallagher
+        email: brendan@bywatersolutions.com
+      - name: Kyle Hall
+        email: kyle@bywatersolutions.com
+      - name: Paul Poulain
+        email: paul.poulain@biblibre.com
+      - name: Martin Renvoize
+        email: martin.renvoize@ptfs-europe.com
+      - name: Marcel de Rooy
+        email: m.de.rooy@rijksmuseum.nl
+    documentation:
+      name: Nicole C. Engard
+      email: nengard@gmail.com
+    translation:
+      name: Bernardo Gonzalez Kriegel
+      email: bgkriegel@gmail.com
+    bugwrangler:
+      - name: Magnus Enger
+        email: magnus@enger.priv.no
+    packaging:
+      name: Robin Sheat
+      email: robin@catalyst.net.nz
+    maintainer:
+      - version: 3.18
+        name: Chris Cormack
+        email: chrisc@catalyst.net.nz
+      - version: 3.16
+        name: Mason James
+        email: mtj@kohaaloha.com
+      - version: 3.14
+        name: Fridolin Somers
+        email: fridolin.somers@biblibre.com
+  3.22:
+    manager:
+      name: Tomás Cohen Arazi
+      email: tomascohen@gmail.com
+    qa:
+      - name: Katrin Fischer
+        email: Katrin.Fischer@bsz-bw.de
+      - name: Jonathan Druart
+        email: jonathan.druart@biblibre.com
+      - name: Brendan Gallagher
+        email: brendan@bywatersolutions.com
+      - name: Kyle Hall
+        email: kyle@bywatersolutions.com
+      - name: Paul Poulain
+        email: paul.poulain@biblibre.com
+      - name: Martin Renvoize
+        email: martin.renvoize@ptfs-europe.com
+      - name: Marcel de Rooy
+        email: m.de.rooy@rijksmuseum.nl
+    documentation:
+      name: Nicole C. Engard
+      email: nengard@gmail.com
+    translation:
+      name: Bernardo Gonzalez Kriegel
+      email: bgkriegel@gmail.com
+    bugwrangler:
+      - name: Amit Gupta
+        email: amitddng135@gmail.com
+      - name: Indranil Das Gupta
+        email: indradg@l2c2.co.in
+      - name: Eivin Giske Skaaren
+        email: eivin@sysmystic.com
+      - name: Zeno Tajoli
+        email: z.tajoli@cineca.it
+      - name: Mirko Tietgen
+        email: mirko@abunchofthings.net
+      - name: Marc Véron
+        email: veron@veron.ch
+    packaging:
+      name: Robin Sheat
+      email: robin@catalyst.net.nz
+    wiki:
+      - name: Thomas Dukleth
+        email: kohadevel@agogme.com
+      - name: Indranil Das Gupta
+        email: indradg@l2c2.co.in
+      - name: Brooke Johnson
+        email: abesottedphoenix@yahoo.com
+    maintainer:
+      - version: 3.20
+        name: Chris Cormack
+        email: chrisc@catalyst.net.nz
+      - version: 3.18
+        name: Liz Rea
+        email: liz@catalyst.net.nz
+      - version: 3.16
+        name: Mason James
+        email: mtj@kohaaloha.com
+      - version: 3.14
+        name: Fridolin Somers
+        email: fridolin.somers@biblibre.com
+  3.24:
+    manager:
+      name: Brendan Gallagher
+      email: brendan@bywatersolutions.com
+    qa:
+      - name: Katrin Fischer
+        email: Katrin.Fischer@bsz-bw.de
+      - name: Marcel de Rooy
+        email: m.de.rooy@rijksmuseum.nl
+      - name: Jesse Weaver
+        email: jweaver@bywatersolutions.com
+      - name: Kyle Hall
+        email: kyle@bywatersolutions.com
+      - name: Tomás Cohen Arazi
+        email: tomascohen@gmail.com
+      - name: Paul Poulain
+        email: paul.poulain@biblibre.com
+      - name: Jonathan Druart
+        email: jonathan.druart@biblibre.com
+      - name: Martin Renvoize
+        email: martin.renvoize@ptfs-europe.com
+    documentation:
+      name: Nicole C. Engard
+      email: nengard@gmail.com
+    translation:
+      name: Bernardo Gonzalez Kriegel
+      email: bgkriegel@gmail.com
+    bugwrangler:
+      - name: Amit Gupta
+        email: amitddng135@gmail.com
+      - name: Magnus Enger
+        email: magnus@enger.priv.no
+      - name: Mirko Tietgen
+        email: mirko@abunchofthings.net
+      - name: Indranil Das Gupta
+        email: indradg@l2c2.co.in
+      - name: Zeno Tajoli
+        email: z.tajoli@cineca.it
+      - name: Marc Véron
+        email: veron@veron.ch
+    packaging:
+      name: Galen Charlton
+      email: gmc@esilibrary.com
+    database:
+      name: Nicole C. Engard
+      email: nengard@gmail.com
+    wiki:
+      - name: Thomas Dukleth
+        email: kohadevel@agogme.com
+    maintainer:
+      - version: 3.22
+        name: Julian Maurice
+        email: julian.maurice@biblibre.com
+      - version: 3.20
+        name: Frédéric Demians
+        email: f.demians@tamil.fr
+      - version: 3.18
+        name: Liz Rea
+        email: liz@catalyst.net.nz
+      - version: 3.16
+        name: Mason James
+        email: mtj@kohaaloha.com
+      - version: 3.14
+        name: Fridolin Somers
+        email: fridolin.somers@biblibre.com
+# Used to generate list of contributions per libraries/institution/companies.
+domainmap:
+  amigos.org: Amigos Library Services
+  anantcorp.com: Anant Corp
+  biblibre.com: BibLibre
+  biblibre.local: BibLibre
+  bigballofwax.co.nz: BigBallOfWax
+  bsz-bw.de: BSZ BW
+  bulac.fr: Bulac
+  bywatersolutions.com: ByWater-Solutions
+  catalyst-eu.net: Catalyst
+  catalyst.net.nz: Catalyst
+  catalystacademy.net.nz: Catalyst Open Source Academy
+  cilea.it: Cilea
+  cineca.it: Cineca
+  cpbibliography.com: C & P Bibliography
+  di.unc.edu.ar: "Universidad Nacional de Córdoba"
+  duncan-SoT.wgtn.cat-it.co.nz: Catalyst
+  enger.priv.no: Libriotech
+  esilibrary.com: Equinox
+  foundations.edu: Foundations
+  hs-gesundheit.de: "Hochschule für Gesundheit (hsg), Germany"
+  inlibro.com: Solutions inLibro inc
+  jbilou.biblibre.local: BibLibre
+  katipo.co.nz: Katipo
+  kohaaloha.com: KohaAloha
+  kul.oslo.kommune.no: Oslo Public Library
+  latrappe.fr: Abbaye de La Trappe
+  libeo.com: Libeo
+  liblime.com: Liblime
+  libriotech.no: Libriotech
+  masmedios.com: MASmedios
+  mtpl.bywatersolutions.com: ByWater-Solutions
+  mvwsd.org: Mountain View Whisman School District
+  myacpl.org: ACPL
+  nekls.org: NEKLS
+  osslabs.biz: Nucsoft OSS Labs
+  phonecoop.coop: Software.coop
+  progilone.fr: Progilone
+  prosentient.com.au: Prosentient Systems
+  ptfs-europe.com: PTFS-Europe
+  ptfs.com: PTFS
+  rijksmuseum.nl: Rijksmuseum
+  rot13.org: rot13.org
+  sys-tech.net: Libeo
+  tamil.fr: Tamil
+  test.bywatersolutions.com: ByWater-Solutions
+  theke.io: Theke Solutions
+  unc.edu.ar: "Universidad Nacional de Córdoba"
+  univ-lyon3.fr: "Université Jean Moulin Lyon 3"
+  univ-rennes2.fr: "Université Rennes 2"
+  uttyler.edu: UT Tyler
+  veron.ch: "Marc Véron AG"
+  web.de: BSZ BW
+  xercode.es: Xercode

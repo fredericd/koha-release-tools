@@ -1,0 +1,207 @@
+# RELEASE NOTES FOR KOHA [% version.human %]
+[% date %]
+
+Koha is the first free and open source software library automation
+package (ILS). Development is sponsored by libraries of varying types
+and sizes, volunteers, and support companies from around the world. The
+website for the Koha project is:
+
+- [Koha Community](http://koha-community.org)
+
+Koha [% version.human %] can be downloaded from:
+
+- [Download]([% downloadlink %])
+
+Installation instructions can be found at:
+
+- [Koha Wiki](http://wiki.koha-community.org/wiki/Installation_Documentation)
+- OR in the INSTALL files that come in the tarball
+
+Koha [% version.human %] is [% IF version.ismajor %]a major release, that comes with many new features[% ELSE %]a bugfix/maintenance release[% END %].
+
+It includes
+[%- IF bugscount.feature -%]
+ [% bugscount.feature %] new features,
+[%- END -%]
+[%- IF bugscount.enh -%]
+ [% bugscount.enh %] enhancements,
+[%- END -%]
+ [% bugscount.normal %] bugfixes.
+
+[%- BLOCK buglist -%]
+[%- IF bug -%]
+## [% title %]
+[%- IF bugfix && version.ismajor -%]
+
+
+(this list includes all bugfixes since the previous major version. Most of them
+have already been fixed in maintainance releases)[% END %]
+[% FOREACH component IN bug %]
+### [% component.key %]
+[% FOREACH b IN component.value %]
+- [[[% b.id %]]](http://bugs.koha-community.org/bugzilla3/show_bug.cgi?id=[% b.id %]) [% b.desc %]
+[%- IF b.notes -%]
+
+
+> [% b.notes %]
+
+[% END %][% END %]
+[% END %][% END %][% END %]
+
+[%- INCLUDE buglist
+     bug = bugs.feature
+     title = 'New features'
+-%]
+
+[% INCLUDE buglist
+     bug = bugs.enh
+     title = 'Enhancements'
+%]
+
+[% INCLUDE buglist
+     bug = bugs.high
+     title = 'Critical bugs fixed'
+     bugfix = 1
+%]
+
+[% INCLUDE buglist
+     bug = bugs.normal
+     title = 'Other bugs fixed'
+     bugfix = 1
+%]
+
+[%- IF sysprefs -%]
+## New sysprefs
+[% FOREACH syspref IN sysprefs %]
+- [% syspref.name %][% END %][% END %]
+
+## System requirements
+
+Important notes:
+    
+- Perl 5.10 is required
+- Zebra is required
+
+## Documentation
+
+The Koha manual is maintained in DocBook.The home page for Koha 
+documentation is 
+
+- [Koha Documentation](http://koha-community.org/documentation/)
+
+As of the date of these release notes, only the English version of the
+Koha manual is available:
+
+- [Koha Manual](http://manual.koha-community.org/[% minorversion %]/en/)
+
+The Git repository for the Koha manual can be found at
+
+- [Koha Git Repository](http://git.koha-community.org/gitweb/?p=kohadocs.git;a=summary)
+
+
+[%- IF translations -%]
+## Translations
+
+Complete or near-complete translations of the OPAC and staff
+interface are available in this release for the following languages:
+[% FOREACH translation IN translations %]
+- [% translation.language %][% IF translation.pcent %] ([% translation.pcent %]%)[% END %][% END %][% END %]
+
+Partial translations are available for various other languages.
+
+The Koha team welcomes additional translations; please see
+
+- [Koha Translation Info](http://wiki.koha-community.org/wiki/Translating_Koha)
+
+for information about translating Koha, and join the koha-translate 
+list to volunteer:
+
+- [Koha Translate List](http://lists.koha-community.org/cgi-bin/mailman/listinfo/koha-translate)
+
+The most up-to-date translations can be found at:
+
+- [Koha Translation](http://translate.koha-community.org/)
+
+## Release Team
+
+The release team for Koha [% version.human %] is
+
+[%- BLOCK person -%]
+[[% p.name %]](mailto:[% p.email %])
+[%- END -%]
+
+- Release Manager: [% INCLUDE person p=team.manager %]
+
+[%- manager = team.qa.shift -%]
+- QA Manager: [% INCLUDE person p=manager %]
+- QA Team:[% FOREACH qa IN team.qa %]
+  - [% INCLUDE person p=qa %][% END %]
+- Bug Wranglers:[% FOREACH wrangler IN team.bugwrangler %]
+  - [% INCLUDE person p=wrangler %][% END %]
+- Packaging Manager: [% INCLUDE person p=team.packaging %]
+- Documentation Manager: [% INCLUDE person p=team.documentation %]
+- Translation Manager: [% INCLUDE person p=team.translation %]
+- Wiki curators: [% FOREACH wiki IN team.wiki %]
+  - [% INCLUDE person p=wiki %][% END %]
+- Release Maintainers:[% FOREACH maint IN team.maintainer %]
+  - [% maint.version %] -- [% INCLUDE person p=maint %][% END %]
+
+## Credits
+
+
+[%- IF sponsors -%]
+We thank the following libraries who are known to have sponsored
+new features in Koha [% version.human %]:
+[% FOREACH sponsor IN sponsors %]
+- [% sponsor %][% END %]
+[% END %]
+
+[%- IF contributors -%]
+We thank the following individuals who contributed patches to Koha [% version.human %].
+[% FOREACH contributor IN contributors %]
+- [% contributor.name %] ([% contributor.commits %])[% END %]
+[% END %]
+
+[%- IF companies -%]
+We thank the following libraries, companies, and other institutions who contributed
+patches to Koha [% version.human %]
+[% FOREACH company IN companies %]
+- [% company.name %] ([% company.commits %])[% END %]
+[% END %]
+
+[%- IF signers -%]
+We also especially thank the following individuals who tested patches
+for Koha.
+[% FOREACH signer IN signers %]
+- [% signer.name %] ([% signer.signoffs %])[%- END -%]
+[% END %]
+
+We regret any omissions.  If a contributor has been inadvertently missed,
+please send a patch against these release notes to 
+koha-patches@lists.koha-community.org.
+
+## Revision control notes
+
+The Koha project uses Git for version control.  The current development 
+version of Koha can be retrieved by checking out the master branch of:
+
+- [Koha Git Repository](git://git.koha-community.org/koha.git)
+
+The branch for this version of Koha and future bugfixes in this release
+line is [% branch %].
+
+[%- UNLESS version.ismajor -%]
+The last Koha release was [% lastrelease.version %], which was released on [%
+lastrelease.date %].  [% END %]
+
+## Bugs and feature requests
+
+Bug reports and feature requests can be filed at the Koha bug
+tracker at:
+
+- [Koha Bugzilla](http://bugs.koha-community.org)
+
+He rau ringa e oti ai.
+(Many hands finish the work)
+
+Autogenerated release notes updated last on [% timestamp %].

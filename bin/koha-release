@@ -1,0 +1,110 @@
+#!/usr/bin/perl
+
+
+use Modern::Perl;
+use File::FindLib 'lib';
+use Koha::Release;
+use Pod::Usage;
+use Getopt::Long;
+use YAML;
+
+
+my ($verbose, $help, $range) = (0, 0, '');
+GetOptions(
+    'verbose' => \$verbose,
+    'help'    => \$help,
+    'range=s' => \$range,
+);
+
+
+sub usage { 
+    pod2usage( -verbose => 2 );
+    exit;
+}
+
+usage() if $help || @ARGV < 2;
+
+
+
+my $release = Koha::Release->new( range => shift @ARGV );
+
+if ( my $cmd = shift @ARGV ) {
+    if ( $cmd =~ /notes/i ) {
+        $release->build_notes(@ARGV);
+    }
+    elsif ( $cmd =~ /html/i ) {
+        my $html = shift @ARGV;
+        usage() unless ($html);
+        $release->build_html($html);
+    }
+    elsif ( $cmd =~ /info/i ) {
+        print Dump($release->info());
+    }
+    elsif ( $cmd =~ /pootle/i ) {
+        $release->download_pootle();
+    }
+    elsif ( $cmd =~ /bug/i ) {
+        my $response = $release->bz->get(
+            'bug/' . join(',', @ARGV) 
+            #'/comment'
+            #'&include_fields=severity,creator_detail,component'
+        );
+        say Dump($response);
+    }
+}
+
+
+
+=head1 NAME
+
+koha-release - Koha release tools
+
+=head1 SYNOPSYS
+
+  koha-release v3.22.01..HEAD info
+  koha-release v3.22.01..HEAD notes
+  koha-release v3.22.01..HEAD html notes.html
+  koha-release v3.22.01..HEAD pootle
+
+=head1 DESCRITPION
+
+The script C<koha-release> generates release notes. It retrieves all bugs in
+Git for a commits range. For this reason, it must be launched from the root
+directory of a Koha Git repository. The bugs descriptions are retrieved from
+bugzilla using BZ REST API. It also generates contributors & signers & sponsor
+list (using Git informations), and translation percentage per language. 
+
+The script works on a range of Git commits. This range generally has to cover
+commits from the last released version to the current one. For example, if the
+current version to be published is 3.22.3, and the previous one was tagged
+v3.22.02, this would be a valid range: v3.22.02..HEAD.
+
+The script is parametrized with a configuration file: C<etc/config.yaml>. See
+it for details. There is one Template Toolkit file used to generate the
+Markdown release notes file: C<etc/notes.tt>.
+
+Four commands:
+
+=over
+
+=item C<koha range info>
+
+Outputs raw info in YAML format about the release.
+
+=item C<koha range notes>
+
+Outputs the release notes in Markdown.
+
+=item C<koha range html notes.html>
+
+Outputs the release notices in HTML by converting the Markdown version
+previously generated.
+
+=item C<koha range pootle>
+
+Retrieves .po files from Koha Pootle Server, and write them in
+misc/translator/po directory. See C<etc/config.yaml>, section C<pootle>.
+
+=back
+
+=cut
