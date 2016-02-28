@@ -12,7 +12,8 @@ use YAML::Syck qw/ Dump LoadFile /;
 use List::MoreUtils qw(uniq);
 use Koha::BZ;
 use Text::MultiMarkdown;
-
+use HTML::TableExtract;
+use Encode qw/encode/;
 
 has version => (
     is => 'rw',
@@ -75,6 +76,14 @@ has bz => (
     lazy => 1,
     builder => '_build_bz'
 );
+
+
+sub trim {
+    my ($s) = @_;
+    $s =~ s/^\s*(.*?)\s*$/$1/s;
+    return $s;
+}
+
 
 sub _build_bz {
     my $c = shift->c->{bz};
@@ -151,7 +160,6 @@ sub download_pootle {
     chdir '../../..';
 }
 
-
 # Get all info about translations from Koha Pootle web site
 sub translations {
     my $self = shift;
@@ -164,9 +172,18 @@ sub translations {
     my $page = get($url);
     my $translations = [ {language => 'English (USA)'} ];
 
-    while ($page =~ m#<td class="stats-name">\W*<a[^>]*>\W*<span>(\w*)</span>\W*</a>\W*</td>\W*<td class="stats-graph">\W*<div class="sortkey">([0-9]*)</div>#g) {
-        push @$translations, {language => $1, pcent => $2} if ($2 > 50);
+    my $translations_parser = HTML::TableExtract->new(
+        headers => [ "Name", "Progress", "Total", "Need Translation", "Last Activity" ]
+    );
+    $translations_parser->parse(encode('UTF-8', $page));
+
+    foreach my $language ($translations_parser->rows) {
+        next if !defined $language;
+        my $name = trim( @$language[0] );
+        my $progress = trim( @$language[1] );
+        push @$translations, { language => $name, pcent => $progress } if ($progress > 50);
     }
+
     return $translations;
 }
 
