@@ -1,7 +1,7 @@
 ---
 # Koha master version.
 # Used to retrieve the current release team in 'team' parameter.
-master: 3.24
+master: 16.05
 # login/password are also retrieved from environment variable:
 # POOTLE_login and POOTLE_password.
 # Here login=0 => no authentification to BZ
@@ -286,6 +286,65 @@ team:
       - version: 3.14
         name: Fridolin Somers
         email: fridolin.somers@biblibre.com
+  16.05:
+    manager:
+      name: Brendan Gallagher
+      email: brendan@bywatersolutions.com
+    qa:
+      - name: Katrin Fischer
+        email: Katrin.Fischer@bsz-bw.de
+      - name: Kyle Hall
+        email: kyle@bywatersolutions.com
+      - name: Jonathan Druart
+        email: jonathan.druart@biblibre.com
+      - name: Tomás Cohen Arazi
+        email: tomascohen@gmail.com
+      - name: Marcel de Rooy
+        email: m.de.rooy@rijksmuseum.nl
+      - name: Nick Clemens
+        email: nick@bywatersolutions.com
+      - name: Jesse Weaver
+        email: jweaver@bywatersolutions.com
+    documentation:
+      name: Nicole C. Engard
+      email: nengard@gmail.com
+    translation:
+      name: Bernardo Gonzalez Kriegel
+      email: bgkriegel@gmail.com
+    bugwrangler:
+      - name: Amit Gupta
+        email: amitddng135@gmail.com
+      - name: Magnus Enger
+        email: magnus@enger.priv.no
+      - name: Mirko Tietgen
+        email: mirko@abunchofthings.net
+      - name: Indranil Das Gupta
+        email: indradg@l2c2.co.in
+      - name: Zeno Tajoli
+        email: z.tajoli@cineca.it
+      - name: Marc Véron
+        email: veron@veron.ch
+    packaging:
+      name: Mirko Tietgen
+      email: mirko@abunchofthings.net
+    database:
+      name: Nicole C. Engard
+      email: nengard@gmail.com
+    wiki:
+      - name: Brook
+        email: 
+      - name: Thomas Dukleth
+        email: kohadevel@agogme.com
+    maintainer:
+      - version: 16.05
+        name: Frédéric Demians
+        email: f.demians@tamil.fr
+      - version: 3.22
+        name: Julian Maurice
+        email: julian.maurice@biblibre.com
+      - version: 3.20
+        name: Chris Cormack
+        email: chrisc@catalyst.net.nz
 # Used to generate list of contributions per libraries/institution/companies.
 domainmap:
   amigos.org: Amigos Library Services

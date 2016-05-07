@@ -24,17 +24,27 @@ has version => (
             require 'kohaversion.pl';
             $version = kohaversion();
         };
-        die "No usable version" unless $version =~ m/(\d)\.(\d\d)\.(\d\d)\.?(\d+)?(-\w*)?/g;
+        say $version;
+        my @parts = split /\./, $version;
+        die "No usable version" unless @parts == 4;
+        if ( $parts[3] =~ /(.*)-(.*)$/ ) {
+            push @parts, $2;
+            $parts[3] =  $1;
+        }
+        else {
+            push @parts, '';
+        }
         $version = {
-            major => $1,
-            minor => $2,
-            release => $3,
-            increment => $4,
-            additional => $5,
-            ismajor => $3 + 0 == 0,
+            major       => $parts[0],
+            minor       => $parts[1],
+            release     => $parts[2],
+            increment   => $parts[3],
+            additional  => $parts[4],
+            ismajor     => $parts[2] + 0 == 0,
         };
         my $human = "$version->{major}.$version->{minor}.$version->{release}";
         $human =~ s/\.0/\./g;
+        $human .= '_' . $version->{additional} if $version->{additional};
         $version->{human} = $human;
         $human =~ s/\./_/g;
         $version->{filesys} = $human;
@@ -164,12 +174,21 @@ sub download_pootle {
 sub translations {
     my $self = shift;
 
-    #FIXME: before 3.20, naming convention on Pootle was different
+    # FIXME: before 3.20, naming convention on Pootle was different
+    # When 3.18 is not maintained anymore, this could be removed
     my $version = $self->version->{minor} + 0;
-    $version = ".$version" if $version > 18;
-    $version = $self->version->{major} . $version . '/';
+    my $sep = '';
+    $sep = "."
+        if ($self->{version}->{major} == 3 && $version > 18) ||
+           not $self->{version}->{major} == 3;
+    $version = $self->version->{major} . $sep . $self->version->{minor} . '/';
+
     my $url = $self->c->{pootle}->{url} . "/projects/$version";
     my $page = get($url);
+    unless ($page) {
+        say "Unable to get translation at this url: $url";
+        return;
+    }
     my $translations = [ {language => 'English (USA)'} ];
 
     my $translations_parser = HTML::TableExtract->new(
@@ -359,10 +378,14 @@ sub build_html {
 
     my $file = $self->_md_file();
     say "Generate HTML release notes file '$html' from '$file'";
+    unless (-e $file) {
+        say "$file doesn't exist. You have to run 'koha-release range notes' first.";
+        exit;
+    }
     open(my $fh, '>', $html) or die "Unable to create $file: $!";
     my $m = Text::MultiMarkdown->new();
     my $text = qx|cat $file|;
-    utf8::decode($text);
+    #utf8::encode($text);
     print $fh $m->markdown($text);
 }
 
