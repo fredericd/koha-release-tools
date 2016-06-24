@@ -387,7 +387,7 @@ sub build_html {
     open(my $fh, '>', $html) or die "Unable to create $file: $!";
     my $m = Text::MultiMarkdown->new();
     my $text = qx|cat $file|;
-    #utf8::encode($text);
+    utf8::decode($text);
     print $fh $m->markdown($text);
 }
 
