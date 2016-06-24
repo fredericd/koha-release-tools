@@ -126,7 +126,8 @@ sub download_pootle {
 
     chdir 'misc/translator/po';
     my $version = $self->version->{minor} + 0;
-    $version = ".$version" if $version > 18;
+    $version = "0$version" if $version =~ /^[0-9]$/;
+    $version = ".$version" if $version ne '18';  # FIXME: delete when 3.18 isn't supported anymore
     $version = $self->version->{major} . $version . '/';
 
     # Login to Pootle
@@ -148,7 +149,8 @@ sub download_pootle {
         exit;
     }
 
-    $mech->get($c->{url} . "/projects/$version");
+    $url = $c->{url} . "/projects/$version";
+    $mech->get($url);
     my $page = $mech->content;
     my @trans;
     while ($page =~ m#<td class="stats-name">\W*<a href="(.*)">\W*<span>(\w*)</span>\W*</a>\W*</td>\W*<td class="stats-graph">\W*<div class="sortkey">([0-9]*)</div>#g) {
